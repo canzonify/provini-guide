@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Scarica la tua guida per i provini e scopri la tua identità artistica">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <title>Grazie! Scarica la Tua Guida | CanzoniFy</title>
+    
+    <link rel="icon" type="image/png" href="https://canzonify.com/favicon.ico">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="https://canzonify.com" class="logo">
+                    Canzo<span class="logo-accent">ni</span>Fy
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="thank-you-hero">
+        <div class="container">
+            <div class="thank-you-content">
+                
+                <div class="success-icon">🎉</div>
+                
+                <h1 class="thank-you-title">
+                    Perfetto, <span class="text-gradient">Sei Dentro!</span>
+                </h1>
+                
+                <p class="thank-you-subtitle">
+                    La tua guida è pronta. Scaricala subito e inizia a prepararti come un professionista.
+                </p>
+
+                <div class="action-buttons">
+                    <a href="./assets/pdf/La_Guida_Completa_per_Essere_Selezionati_ai_Provini.pdf" 
+                       download="Guida_Provini_CanzoniFy.pdf"
+                       class="btn btn-primary btn-large">
+                        📥 Scarica la Guida PDF
+                    </a>
+                </div>
+
+                <div class="divider">
+                    <span>Ma Prima...</span>
+                </div>
+
+                <div class="cta-box">
+                    <p style="font-size: 2.5rem; margin-bottom: var(--space-md);">🎭</p>
+                    
+                    <h2>
+                        Conosci Davvero la Tua <span class="text-gradient">Identità Artistica</span>?
+                    </h2>
+                    
+                    <p>
+                        I talent show non cercano voci perfette. Cercano <strong>personalità uniche</strong>.
+                    </p>
+                    
+                    <p>
+                        Prima di studiare la guida, scopri chi sei come artista. 
+                        Il nostro test ti rivela la tua identità tra 32 possibili profili artistici.
+                    </p>
+
+                    <ul style="text-align: left; max-width: 450px; margin: 0 auto var(--space-lg); list-style: none; padding: 0;">
+                        <li style="padding: var(--space-sm) 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            ✅ Solo 7 minuti di tempo
+                        </li>
+                        <li style="padding: var(--space-sm) 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            ✅ 100% gratuito, sempre
+                        </li>
+                        <li style="padding: var(--space-sm) 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                            ✅ Report personalizzato via email
+                        </li>
+                        <li style="padding: var(--space-sm) 0;">
+                            ✅ Basato su MBTI e framework professionali
+                        </li>
+                    </ul>
+
+                    <a href="https://canzonify.com/test" 
+                       class="btn btn-primary btn-large"
+                       target="_blank"
+                       rel="noopener">
+                        🎯 Scopri la Tua Identità Artistica
+                    </a>
+
+                    <p style="font-size: 0.875rem; color: var(--color-text-dark); margin-top: var(--space-md); margin-bottom: 0;">
+                        <strong>1247 artisti</strong> hanno già scoperto chi sono davvero. E tu?
+                    </p>
+                </div>
+
+                <div style="margin-top: var(--space-xl); padding: var(--space-lg); background: rgba(240, 203, 1, 0.1); border-left: 4px solid var(--color-secondary); border-radius: var(--radius-md);">
+                    <p style="font-style: italic; margin-bottom: var(--space-sm);">
+                        "Ho fatto 3 provini, sempre scartata. Poi ho scoperto di essere una 'Performer Empatica'. 
+                        Ho cambiato approccio: brano acustico, voce naturale, zero effetti. 
+                        Risultato? Semifinale."
+                    </p>
+                    <p style="font-size: 0.875rem; color: var(--color-secondary); font-weight: 600; margin-bottom: 0;">
+                        — Sofia, 24 anni
+                    </p>
+                </div>
+
+                <div style="margin-top: var(--space-2xl); padding-top: var(--space-xl); border-top: 1px solid rgba(255,255,255,0.1);">
+                    <p style="font-size: 1.125rem; color: var(--color-text);">
+                        Hai domande? Scrivici su Instagram 
+                        <a href="https://instagram.com/canzonify" style="color: var(--color-secondary); text-decoration: underline;">@canzonify</a>
+                    </p>
+                    <p style="font-size: 1rem; color: var(--color-text-dark); margin-bottom: 0;">
+                        In bocca al lupo per il tuo percorso! 🚀
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>
+                Creato con ❤️ da <a href="https://canzonify.com" target="_blank">CanzoniFy</a>
+            </p>
+            <p style="margin-bottom: 0;">
+                Per artisti che credono nell'autenticità, non nei compromessi.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        document.querySelector('a[download]').addEventListener('click', function() {
+            console.log('PDF Download initiated');
+        });
+    </script>
+
+</body>
+</html>
