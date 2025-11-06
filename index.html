@@ -5,14 +5,432 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Scopri la guida completa per superare i provini dei talent show con autenticità. 42 punti checklist da coach professionisti.">
     <meta name="keywords" content="provini, talent show, guida cantanti, audizioni, x factor, amici">
-    
+    <meta property="og:title" content="La Guida Anti-Sistema per Superare i Provini">
+    <meta property="og:description" content="42 punti checklist per essere selezionati ai talent show con autenticità">
+    <meta property="og:type" content="website">
     <title>La Guida Completa per Essere Selezionati ai Provini | CanzoniFy</title>
-    
     <link rel="icon" type="image/png" href="https://canzonify.com/favicon.ico">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    
+    <style>
+        /* ============================================
+           CANZONIFY - LANDING PAGE STYLES
+           ============================================ */
+        
+        :root {
+            --color-primary: #aa4df7;
+            --color-secondary: #f0cb01;
+            --color-dark: #1a0b2e;
+            --color-dark-alt: #2d1b4e;
+            --color-white: #ffffff;
+            --color-text: #e2e8f0;
+            --color-text-dark: #a0aec0;
+            --gradient-primary: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 50%, #aa4df7 100%);
+            --gradient-accent: linear-gradient(90deg, #aa4df7 0%, #f0cb01 100%);
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --shadow-lg: 0 8px 32px rgba(170, 77, 247, 0.3);
+            --shadow-glow: 0 0 30px rgba(240, 203, 1, 0.4);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-primary);
+            background: var(--color-dark);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--color-white);
+            margin-bottom: var(--space-md);
+        }
+        
+        h1 {
+            font-size: 2rem;
+            letter-spacing: -0.02em;
+        }
+        
+        h2 {
+            font-size: 1.75rem;
+        }
+        
+        h3 {
+            font-size: 1.25rem;
+        }
+        
+        p {
+            margin-bottom: var(--space-md);
+            font-size: 1rem;
+            color: var(--color-text);
+        }
+        
+        .text-gradient {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        .section {
+            padding: var(--space-xl) 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-primary);
+        }
+        
+        .btn-primary {
+            background: var(--gradient-accent);
+            color: var(--color-dark);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 40px rgba(240, 203, 1, 0.6);
+        }
+        
+        .btn-large {
+            padding: 1.25rem 2.5rem;
+            font-size: 1.125rem;
+        }
+        
+        .btn-full {
+            width: 100%;
+            display: block;
+        }
+        
+        .header {
+            padding: var(--space-md) 0;
+            background: rgba(26, 11, 46, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(170, 77, 247, 0.2);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-white);
+            text-decoration: none;
+        }
+        
+        .logo-accent {
+            color: var(--color-secondary);
+        }
+        
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--gradient-primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(170, 77, 247, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(240, 203, 1, 0.2) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+            z-index: 0;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(5deg); }
+            66% { transform: translate(-20px, 20px) rotate(-5deg); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: var(--space-xl) 0;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            padding: var(--space-xs) var(--space-md);
+            background: rgba(240, 203, 1, 0.15);
+            border: 1px solid var(--color-secondary);
+            border-radius: 50px;
+            color: var(--color-secondary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .hero h1 {
+            font-size: 2.25rem;
+            margin-bottom: var(--space-md);
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: var(--color-text);
+            margin-bottom: var(--space-xl);
+            max-width: 600px;
+        }
+        
+        .hero-visual {
+            margin: var(--space-xl) 0;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(170, 77, 247, 0.2) 0%, rgba(240, 203, 1, 0.2) 100%);
+            border-radius: var(--radius-lg);
+            border: 2px solid rgba(170, 77, 247, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-visual::before {
+            content: '🎤';
+            font-size: 8rem;
+            opacity: 0.3;
+            animation: pulse 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+        
+        .form-wrapper {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-lg);
+            max-width: 500px;
+            margin: var(--space-xl) auto 0;
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-md);
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-weight: 600;
+            color: var(--color-white);
+            font-size: 0.9rem;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-sm);
+            color: var(--color-white);
+            font-size: 1rem;
+            font-family: var(--font-primary);
+            transition: all 0.3s ease;
+        }
+        
+        .form-input::placeholder {
+            color: var(--color-text-dark);
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 0 3px rgba(240, 203, 1, 0.1);
+        }
+        
+        .form-privacy {
+            font-size: 0.75rem;
+            color: var(--color-text-dark);
+            text-align: center;
+            margin-top: var(--space-md);
+            line-height: 1.4;
+        }
+        
+        .features {
+            background: var(--color-dark-alt);
+            padding: var(--space-2xl) 0;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(170, 77, 247, 0.2);
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-md);
+        }
+        
+        .feature-card h3 {
+            color: var(--color-white);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .feature-card p {
+            color: var(--color-text);
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+        
+        .footer {
+            background: var(--color-dark-alt);
+            padding: var(--space-lg) 0;
+            border-top: 1px solid rgba(170, 77, 247, 0.2);
+            text-align: center;
+        }
+        
+        .footer p {
+            margin-bottom: var(--space-sm);
+            font-size: 0.875rem;
+            color: var(--color-text-dark);
+        }
+        
+        .footer a {
+            color: var(--color-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: var(--color-primary);
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .mt-xl {
+            margin-top: var(--space-xl);
+        }
+        
+        /* Responsive */
+        @media (min-width: 768px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.25rem; }
+            .hero h1 { font-size: 3.5rem; }
+            .hero-subtitle { font-size: 1.25rem; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+            .section { padding: var(--space-2xl) 0; }
+        }
+        
+        @media (min-width: 1024px) {
+            .hero-content {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: var(--space-2xl);
+                align-items: center;
+            }
+            .hero-visual { margin: 0; }
+            .features-grid { grid-template-columns: repeat(3, 1fr); }
+            .form-wrapper { margin: 0; }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
 </head>
 <body>
     
+    <!-- HEADER -->
     <header class="header">
         <div class="container">
             <div class="header-content">
@@ -23,6 +441,7 @@
         </div>
     </header>
 
+    <!-- HERO SECTION -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -40,6 +459,7 @@
                         rimanendo fedele a te stesso.
                     </p>
 
+                    <!-- FORM -->
                     <div class="form-wrapper fade-in-up">
                         <h3 class="form-title">Scarica la Guida Gratuita</h3>
                         
@@ -80,13 +500,12 @@
                     </div>
                 </div>
 
-                <div class="hero-image-wrapper float">
-                    <img src="./assets/images/hero-image.jpg" alt="Artista al microfono" class="hero-image">
-                </div>
+                <div class="hero-visual"></div>
             </div>
         </div>
     </section>
 
+    <!-- FEATURES SECTION -->
     <section class="features">
         <div class="container">
             <h2 class="text-center">Cosa Troverai nella Guida</h2>
@@ -133,6 +552,7 @@
                 </div>
             </div>
 
+            <!-- CTA RIPETUTA -->
             <div class="text-center mt-xl">
                 <a href="#leadForm" class="btn btn-primary btn-large">
                     Voglio la Guida Completa 🎯
@@ -141,6 +561,7 @@
         </div>
     </section>
 
+    <!-- SOCIAL PROOF -->
     <section class="section" style="background: var(--color-dark);">
         <div class="container text-center">
             <div style="max-width: 700px; margin: 0 auto;">
@@ -156,6 +577,7 @@
         </div>
     </section>
 
+    <!-- FINAL CTA -->
     <section class="section" style="background: var(--gradient-primary);">
         <div class="container text-center">
             <h2 style="font-size: 2.5rem; margin-bottom: var(--space-md);">
@@ -174,6 +596,7 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <p>
@@ -185,8 +608,118 @@
         </div>
     </footer>
 
+    <!-- Hidden iframe for form submission without redirect -->
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-    <script src="./assets/js/script.js"></script>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Form submission handler
+            const form = document.getElementById('leadForm');
+            
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '⏳ Invio in corso...';
+                    
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    
+                    localStorage.setItem('userName', name);
+                    localStorage.setItem('userEmail', email);
+                    
+                    // Redirect dopo submit - apre PDF in nuova tab
+                    setTimeout(function() {
+                        window.open('https://drive.google.com/file/d/1yQqO9saanAmMFezpPxBX2fH7LL5ZI4tt/view?usp=sharing', '_blank');
+                        
+                        // Poi reindirizza al test
+                        setTimeout(function() {
+                            window.location.href = 'https://canzonify.com/test';
+                        }, 1000);
+                    }, 1500);
+                });
+            }
+            
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Fade in animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+            
+            // Form validation feedback
+            const inputs = document.querySelectorAll('.form-input');
+            
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.value.trim() !== '' && this.checkValidity()) {
+                        this.style.borderColor = 'var(--color-secondary)';
+                    } else if (this.value.trim() !== '') {
+                        this.style.borderColor = '#ff4444';
+                    }
+                });
+                
+                input.addEventListener('focus', function() {
+                    this.style.borderColor = 'var(--color-secondary)';
+                });
+            });
+            
+            // Email validation
+            const emailInput = document.getElementById('email');
+            
+            if (emailInput) {
+                emailInput.addEventListener('blur', function() {
+                    const email = this.value;
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    
+                    if (email && !emailRegex.test(email)) {
+                        this.setCustomValidity('Per favore inserisci un\'email valida');
+                        this.style.borderColor = '#ff4444';
+                    } else {
+                        this.setCustomValidity('');
+                    }
+                });
+            }
+            
+        });
+
+        // Console easter egg
+        console.log('%c🎤 CanzoniFy ', 'background: #aa4df7; color: #fff; padding: 10px 20px; font-size: 20px; font-weight: bold;');
+        console.log('%cPer artisti che credono nell\'autenticità, non nei compromessi.', 'color: #f0cb01; font-size: 14px;');
+    </script>
 
 </body>
 </html>
