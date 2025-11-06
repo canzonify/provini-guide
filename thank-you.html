@@ -3,120 +3,383 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Scarica la tua guida per i provini e scopri la tua identità artistica">
-    <meta name="robots" content="noindex, nofollow">
-    
+    <meta name="description" content="Grazie per aver scaricato la guida! Scopri ora il tuo profilo artistico con il test della personalità musicale.">
     <title>Grazie! Scarica la Tua Guida | CanzoniFy</title>
-    
     <link rel="icon" type="image/png" href="https://canzonify.com/favicon.ico">
-    <link rel="stylesheet" href="./assets/css/style.css">
+    
+    <style>
+        /* ============================================
+           CANZONIFY - THANK YOU PAGE STYLES
+           ============================================ */
+        
+        :root {
+            --color-primary: #aa4df7;
+            --color-secondary: #f0cb01;
+            --color-dark: #1a0b2e;
+            --color-dark-alt: #2d1b4e;
+            --color-white: #ffffff;
+            --color-text: #e2e8f0;
+            --color-text-dark: #a0aec0;
+            --gradient-primary: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 50%, #aa4df7 100%);
+            --gradient-accent: linear-gradient(90deg, #aa4df7 0%, #f0cb01 100%);
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 20px;
+            --shadow-lg: 0 8px 32px rgba(170, 77, 247, 0.3);
+            --shadow-glow: 0 0 30px rgba(240, 203, 1, 0.4);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-primary);
+            background: var(--gradient-primary);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            padding: var(--space-md) 0;
+            background: rgba(26, 11, 46, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(170, 77, 247, 0.2);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 40px;
+            width: auto;
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-2xl) 0;
+            position: relative;
+        }
+        
+        .main-content::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 50%, rgba(170, 77, 247, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(240, 203, 1, 0.2) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
+            z-index: 0;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(30px, -30px) rotate(5deg); }
+            66% { transform: translate(-20px, 20px) rotate(-5deg); }
+        }
+        
+        .thank-you-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            max-width: 600px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: var(--space-md);
+            animation: bounce 1s ease infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: var(--color-white);
+            margin-bottom: var(--space-md);
+            line-height: 1.2;
+        }
+        
+        .text-gradient {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .user-name {
+            color: var(--color-secondary);
+            font-weight: 600;
+        }
+        
+        .subtitle {
+            font-size: 1.125rem;
+            color: var(--color-text);
+            margin-bottom: var(--space-xl);
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1.25rem 2.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: var(--font-primary);
+            margin: var(--space-sm) 0;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-accent);
+            color: var(--color-dark);
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 40px rgba(240, 203, 1, 0.6);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--color-secondary);
+            transform: translateY(-2px);
+        }
+        
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            margin: var(--space-xl) 0;
+        }
+        
+        .cta-section {
+            background: rgba(170, 77, 247, 0.1);
+            border: 2px solid rgba(170, 77, 247, 0.3);
+            border-radius: var(--radius-md);
+            padding: var(--space-xl);
+            margin-top: var(--space-xl);
+        }
+        
+        .cta-section h2 {
+            font-size: 1.75rem;
+            color: var(--color-white);
+            margin-bottom: var(--space-md);
+        }
+        
+        .cta-section p {
+            font-size: 1rem;
+            color: var(--color-text);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .features-list {
+            text-align: left;
+            margin: var(--space-lg) 0;
+        }
+        
+        .features-list li {
+            font-size: 0.95rem;
+            color: var(--color-text);
+            margin-bottom: var(--space-sm);
+            padding-left: var(--space-md);
+            position: relative;
+        }
+        
+        .features-list li::before {
+            content: '✨';
+            position: absolute;
+            left: 0;
+        }
+        
+        .footer {
+            background: rgba(26, 11, 46, 0.95);
+            padding: var(--space-lg) 0;
+            border-top: 1px solid rgba(170, 77, 247, 0.2);
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        .footer p {
+            margin-bottom: var(--space-sm);
+            font-size: 0.875rem;
+            color: var(--color-text-dark);
+        }
+        
+        .footer a {
+            color: var(--color-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: var(--color-primary);
+        }
+        
+        /* Responsive */
+        @media (min-width: 768px) {
+            h1 { font-size: 3rem; }
+            .logo img { height: 50px; }
+            .thank-you-card { padding: var(--space-2xl) 3rem; }
+        }
+        
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            .subtitle { font-size: 1rem; }
+            .btn { font-size: 1rem; padding: 1rem 2rem; }
+        }
+    </style>
 </head>
 <body>
     
+    <!-- HEADER -->
     <header class="header">
         <div class="container">
             <div class="header-content">
                 <a href="https://canzonify.com" class="logo">
-                    Canzo<span class="logo-accent">ni</span>Fy
+                    <img src="logo.png" alt="CanzoniFy Logo">
                 </a>
             </div>
         </div>
     </header>
 
-    <section class="thank-you-hero">
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
         <div class="container">
-            <div class="thank-you-content">
+            <div class="thank-you-card">
                 
                 <div class="success-icon">🎉</div>
                 
-                <h1 class="thank-you-title">
-                    Perfetto, <span class="text-gradient">Sei Dentro!</span>
+                <h1>
+                    Grazie <span class="user-name" id="userName"></span>!
                 </h1>
                 
-                <p class="thank-you-subtitle">
-                    La tua guida è pronta. Scaricala subito e inizia a prepararti come un professionista.
+                <p class="subtitle">
+                    La tua guida è pronta! Clicca sul bottone qui sotto per scaricarla subito e iniziare a preparare il tuo provino da vero professionista.
                 </p>
 
-                <div class="action-buttons">
-                    <a href="./assets/pdf/La_Guida_Completa_per_Essere_Selezionati_ai_Provini.pdf" 
-                       download="Guida_Provini_CanzoniFy.pdf"
-                       class="btn btn-primary btn-large">
-                        📥 Scarica la Guida PDF
-                    </a>
-                </div>
+                <!-- DOWNLOAD BUTTON -->
+                <a href="La Guida Completa per Essere Selezionati ai Provini 2025.pdf" download class="btn btn-primary">
+                    📥 Scarica la Guida Ora
+                </a>
 
-                <div class="divider">
-                    <span>Ma Prima...</span>
-                </div>
+                <div class="divider"></div>
 
-                <div class="cta-box">
-                    <p style="font-size: 2.5rem; margin-bottom: var(--space-md);">🎭</p>
-                    
+                <!-- CTA TEST PERSONALITÀ -->
+                <div class="cta-section">
                     <h2>
-                        Conosci Davvero la Tua <span class="text-gradient">Identità Artistica</span>?
+                        🎭 Scopri il Tuo <span class="text-gradient">Profilo Artistico</span>
                     </h2>
                     
                     <p>
-                        I talent show non cercano voci perfette. Cercano <strong>personalità uniche</strong>.
-                    </p>
-                    
-                    <p>
-                        Prima di studiare la guida, scopri chi sei come artista. 
-                        Il nostro test ti rivela la tua identità tra 32 possibili profili artistici.
+                        Ogni artista è unico. Il nostro test della personalità musicale ti rivela:
                     </p>
 
-                    <ul style="text-align: left; max-width: 450px; margin: 0 auto var(--space-lg); list-style: none; padding: 0;">
-                        <li style="padding: var(--space-sm) 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                            ✅ Solo 7 minuti di tempo
-                        </li>
-                        <li style="padding: var(--space-sm) 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                            ✅ 100% gratuito, sempre
-                        </li>
-                        <li style="padding: var(--space-sm) 0; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                            ✅ Report personalizzato via email
-                        </li>
-                        <li style="padding: var(--space-sm) 0;">
-                            ✅ Basato su MBTI e framework professionali
-                        </li>
+                    <ul class="features-list">
+                        <li><strong>Il tuo archetipo artistico</strong> tra 32 profili unici</li>
+                        <li><strong>I tuoi punti di forza</strong> naturali sul palco</li>
+                        <li><strong>Le strategie personalizzate</strong> per il tuo sviluppo</li>
+                        <li><strong>Avatar 3D Pixar-style</strong> del tuo profilo</li>
                     </ul>
 
-                    <a href="https://canzonify.com/test" 
-                       class="btn btn-primary btn-large"
-                       target="_blank"
-                       rel="noopener">
-                        🎯 Scopri la Tua Identità Artistica
+                    <p style="margin-bottom: var(--space-lg);">
+                        <strong>100% gratuito • 5 minuti • Risultati immediati</strong>
+                    </p>
+
+                    <a href="https://canzonify.com/test" class="btn btn-primary">
+                        🚀 Fai il Test Gratuito
                     </a>
-
-                    <p style="font-size: 0.875rem; color: var(--color-text-dark); margin-top: var(--space-md); margin-bottom: 0;">
-                        <strong>1247 artisti</strong> hanno già scoperto chi sono davvero. E tu?
-                    </p>
                 </div>
 
-                <div style="margin-top: var(--space-xl); padding: var(--space-lg); background: rgba(240, 203, 1, 0.1); border-left: 4px solid var(--color-secondary); border-radius: var(--radius-md);">
-                    <p style="font-style: italic; margin-bottom: var(--space-sm);">
-                        "Ho fatto 3 provini, sempre scartata. Poi ho scoperto di essere una 'Performer Empatica'. 
-                        Ho cambiato approccio: brano acustico, voce naturale, zero effetti. 
-                        Risultato? Semifinale."
-                    </p>
-                    <p style="font-size: 0.875rem; color: var(--color-secondary); font-weight: 600; margin-bottom: 0;">
-                        — Sofia, 24 anni
-                    </p>
-                </div>
+                <div class="divider"></div>
 
-                <div style="margin-top: var(--space-2xl); padding-top: var(--space-xl); border-top: 1px solid rgba(255,255,255,0.1);">
-                    <p style="font-size: 1.125rem; color: var(--color-text);">
-                        Hai domande? Scrivici su Instagram 
-                        <a href="https://instagram.com/canzonify" style="color: var(--color-secondary); text-decoration: underline;">@canzonify</a>
-                    </p>
-                    <p style="font-size: 1rem; color: var(--color-text-dark); margin-bottom: 0;">
-                        In bocca al lupo per il tuo percorso! 🚀
-                    </p>
-                </div>
+                <!-- SECONDARY CTA -->
+                <p style="font-size: 0.9rem; color: var(--color-text-dark); margin-top: var(--space-lg);">
+                    Hai domande o vuoi una consulenza personalizzata?
+                </p>
+                
+                <a href="https://canzonify.com" class="btn btn-secondary">
+                    Visita CanzoniFy.com
+                </a>
 
             </div>
         </div>
-    </section>
+    </main>
 
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <p>
@@ -128,20 +391,59 @@
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Personalizza con il nome dell'utente
+            const userName = localStorage.getItem('userName');
+            const userNameElement = document.getElementById('userName');
+            
+            if (userName && userNameElement) {
+                userNameElement.textContent = userName;
+            } else if (userNameElement) {
+                userNameElement.textContent = '';
+                // Nascondi lo spazio se non c'è nome
+                document.querySelector('h1').innerHTML = 'Grazie!';
+            }
+
+            // Track download button click
+            const downloadBtn = document.querySelector('a[download]');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', function() {
+                    console.log('PDF Download initiated');
+                    
+                    // Optional: Track conversion
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'download', {
+                            'event_category': 'Lead Magnet',
+                            'event_label': 'Guida Provini PDF'
+                        });
+                    }
+                });
+            }
+
+            // Track test CTA click
+            const testBtn = document.querySelector('a[href*="/test"]');
+            if (testBtn) {
+                testBtn.addEventListener('click', function() {
+                    console.log('Test CTA clicked');
+                    
+                    // Optional: Track conversion
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'click', {
+                            'event_category': 'CTA',
+                            'event_label': 'Test Personalità'
+                        });
+                    }
+                });
+            }
+
         });
 
-        document.querySelector('a[download]').addEventListener('click', function() {
-            console.log('PDF Download initiated');
-        });
+        // Console easter egg
+        console.log('%c🎤 CanzoniFy ', 'background: #aa4df7; color: #fff; padding: 10px 20px; font-size: 20px; font-weight: bold;');
+        console.log('%cBenvenuto nella famiglia! 🎉', 'color: #f0cb01; font-size: 14px;');
     </script>
 
 </body>
