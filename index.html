@@ -161,47 +161,62 @@
         }
         
         .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-white);
+            display: flex;
+            align-items: center;
             text-decoration: none;
         }
         
-        .logo-accent {
-            color: var(--color-secondary);
+        .logo img {
+            height: 40px;
+            width: auto;
         }
         
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            background: var(--gradient-primary);
             position: relative;
             overflow: hidden;
         }
         
-        .hero::before {
-            content: '';
+        .hero-video-wrapper {
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 50%, rgba(170, 77, 247, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 50%, rgba(240, 203, 1, 0.2) 0%, transparent 50%);
-            animation: float 20s ease-in-out infinite;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
             z-index: 0;
         }
         
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(5deg); }
-            66% { transform: translate(-20px, 20px) rotate(-5deg); }
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+        
+        .hero-video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(26, 11, 46, 0.9) 0%, 
+                rgba(45, 27, 78, 0.85) 50%, 
+                rgba(170, 77, 247, 0.7) 100%);
+            z-index: 1;
         }
         
         .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             padding: var(--space-xl) 0;
         }
         
@@ -243,18 +258,21 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
         }
         
         .hero-visual::before {
-            content: '🎤';
-            font-size: 8rem;
-            opacity: 0.3;
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(170, 77, 247, 0.1) 0%, transparent 70%);
             animation: pulse 3s ease-in-out infinite;
         }
         
         @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.1); opacity: 0.5; }
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
         }
         
         .form-wrapper {
@@ -397,6 +415,7 @@
             .hero-subtitle { font-size: 1.25rem; }
             .features-grid { grid-template-columns: repeat(2, 1fr); }
             .section { padding: var(--space-2xl) 0; }
+            .logo img { height: 50px; }
         }
         
         @media (min-width: 1024px) {
@@ -435,7 +454,7 @@
         <div class="container">
             <div class="header-content">
                 <a href="https://canzonify.com" class="logo">
-                    Canzo<span class="logo-accent">ni</span>Fy
+                    <img src="logo.png" alt="CanzoniFy Logo">
                 </a>
             </div>
         </div>
@@ -443,6 +462,14 @@
 
     <!-- HERO SECTION -->
     <section class="hero">
+        <!-- Video Background -->
+        <div class="hero-video-wrapper">
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="https://videos.pexels.com/video-files/3326187/3326187-uhd_2560_1440_25fps.mp4" type="video/mp4">
+            </video>
+            <div class="hero-video-overlay"></div>
+        </div>
+
         <div class="container">
             <div class="hero-content">
                 <div>
@@ -463,14 +490,14 @@
                     <div class="form-wrapper fade-in-up">
                         <h3 class="form-title">Scarica la Guida Gratuita</h3>
                         
-                        <form id="leadForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdKj7oXKzHzQxVzRqHXm9rKXlQqN9gX5VwXzNqQzP0xZqXzQw/formResponse" method="POST" target="hidden_iframe">
+                        <form id="leadForm" action="https://docs.google.com/forms/d/e/1FAIpQLSckAyqus_qZyUoMjIKDMCCTNZPNuiaYkF8JFm8VMUfD-6q18A/formResponse" method="POST" target="hidden_iframe">
                             
                             <div class="form-group">
                                 <label for="name" class="form-label">Nome</label>
                                 <input 
                                     type="text" 
                                     id="name" 
-                                    name="entry.1234567890" 
+                                    name="entry.1079412521" 
                                     class="form-input" 
                                     placeholder="Il tuo nome" 
                                     required
@@ -482,7 +509,7 @@
                                 <input 
                                     type="email" 
                                     id="email" 
-                                    name="entry.0987654321" 
+                                    name="entry.1597607212" 
                                     class="form-input" 
                                     placeholder="la.tua@email.com" 
                                     required
@@ -628,17 +655,13 @@
                     const name = document.getElementById('name').value;
                     const email = document.getElementById('email').value;
                     
+                    // Salva dati in localStorage per la thank you page
                     localStorage.setItem('userName', name);
                     localStorage.setItem('userEmail', email);
                     
-                    // Redirect dopo submit - apre PDF in nuova tab
+                    // Redirect a thank-you.html dopo 1.5 secondi
                     setTimeout(function() {
-                        window.open('https://drive.google.com/file/d/1yQqO9saanAmMFezpPxBX2fH7LL5ZI4tt/view?usp=sharing', '_blank');
-                        
-                        // Poi reindirizza al test
-                        setTimeout(function() {
-                            window.location.href = 'https://canzonify.com/test';
-                        }, 1000);
+                        window.location.href = 'thank-you.html';
                     }, 1500);
                 });
             }
