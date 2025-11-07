@@ -3,37 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Grazie per aver scaricato la guida! Scopri ora il tuo profilo artistico con il test della personalità musicale.">
+    <meta name="description" content="Grazie per aver scaricato la guida! Scopri il tuo profilo artistico con il test MBTI musicale.">
     <title>Grazie! Scarica la Tua Guida | CanzoniFy</title>
     <link rel="icon" type="image/png" href="https://canzonify.com/favicon.ico">
     
     <style>
         /* ============================================
-           CANZONIFY - THANK YOU PAGE STYLES
+           CANZONIFY - THANK YOU PAGE OPTIMIZED
+           Mobile First Design
            ============================================ */
         
         :root {
             --color-primary: #aa4df7;
             --color-secondary: #f0cb01;
             --color-dark: #1a0b2e;
-            --color-dark-alt: #2d1b4e;
             --color-white: #ffffff;
             --color-text: #e2e8f0;
-            --color-text-dark: #a0aec0;
-            --gradient-primary: linear-gradient(135deg, #1a0b2e 0%, #2d1b4e 50%, #aa4df7 100%);
-            --gradient-accent: linear-gradient(90deg, #aa4df7 0%, #f0cb01 100%);
-            --space-xs: 0.5rem;
-            --space-sm: 1rem;
-            --space-md: 1.5rem;
-            --space-lg: 2rem;
-            --space-xl: 3rem;
-            --space-2xl: 4rem;
-            --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 20px;
-            --shadow-lg: 0 8px 32px rgba(170, 77, 247, 0.3);
-            --shadow-glow: 0 0 30px rgba(240, 203, 1, 0.4);
+            --gradient-bg: linear-gradient(180deg, #1a0b2e 0%, #2d1b4e 100%);
         }
         
         * {
@@ -42,114 +28,56 @@
             box-sizing: border-box;
         }
         
-        html {
-            font-size: 16px;
-            scroll-behavior: smooth;
+        html, body {
+            height: 100%;
         }
         
         body {
-            font-family: var(--font-primary);
-            background: var(--gradient-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: var(--gradient-bg);
             color: var(--color-text);
-            line-height: 1.6;
-            overflow-x: hidden;
-            min-height: 100vh;
+            line-height: 1.5;
             display: flex;
             flex-direction: column;
         }
         
-        html {
-            height: 100%;
-        }
-        
+        /* HEADER */
         .header {
-            padding: var(--space-md) 0;
+            padding: 1rem;
             background: rgba(26, 11, 46, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(170, 77, 247, 0.2);
         }
         
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--space-md);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
         .logo {
             display: flex;
-            align-items: center;
-            text-decoration: none;
+            justify-content: center;
         }
         
         .logo img {
-            height: 40px;
+            height: 35px;
             width: auto;
         }
         
-        .main-content {
+        /* MAIN CONTENT */
+        .main {
             flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: var(--space-2xl) 0;
-            position: relative;
-        }
-        
-        .main-content::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 30% 50%, rgba(170, 77, 247, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 50%, rgba(240, 203, 1, 0.2) 0%, transparent 50%);
-            animation: float 20s ease-in-out infinite;
-            z-index: 0;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            33% { transform: translate(30px, -30px) rotate(5deg); }
-            66% { transform: translate(-20px, 20px) rotate(-5deg); }
-        }
-        
-        .thank-you-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-lg);
-            padding: var(--space-2xl);
+            padding: 1.5rem 1rem;
             max-width: 600px;
-            text-align: center;
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            z-index: 1;
-            animation: fadeInUp 0.6s ease forwards;
+            margin: 0 auto;
+            width: 100%;
         }
         
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* SUCCESS MESSAGE */
+        .success {
+            text-align: center;
+            margin-bottom: 2rem;
         }
         
         .success-icon {
-            font-size: 4rem;
-            margin-bottom: var(--space-md);
-            animation: bounce 1s ease infinite;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            animation: bounce 1s ease;
         }
         
         @keyframes bounce {
@@ -157,58 +85,89 @@
             50% { transform: translateY(-10px); }
         }
         
-        h1 {
-            font-size: 2.5rem;
+        .success h1 {
+            font-size: 1.75rem;
             color: var(--color-white);
-            margin-bottom: var(--space-md);
+            margin-bottom: 0.5rem;
             line-height: 1.2;
-        }
-        
-        .text-gradient {
-            background: var(--gradient-accent);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
         
         .user-name {
             color: var(--color-secondary);
-            font-weight: 600;
         }
         
-        .subtitle {
-            font-size: 1.125rem;
+        .success p {
+            font-size: 1rem;
             color: var(--color-text);
-            margin-bottom: var(--space-xl);
-            line-height: 1.6;
+            line-height: 1.4;
         }
         
-        .btn {
+        /* VIDEO MOCKUP */
+        .video-container {
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .video-wrapper {
             display: inline-block;
-            padding: 1.25rem 2.5rem;
+            max-width: 100%;
+            width: 280px;
+        }
+        
+        .video-mockup {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 
+                0 15px 30px rgba(0, 0, 0, 0.5),
+                0 0 0 2px rgba(170, 77, 247, 0.6),
+                0 0 25px rgba(170, 77, 247, 0.5),
+                0 0 50px rgba(240, 203, 1, 0.3);
+            animation: videoGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes videoGlow {
+            0%, 100% {
+                box-shadow: 
+                    0 15px 30px rgba(0, 0, 0, 0.5),
+                    0 0 0 2px rgba(170, 77, 247, 0.6),
+                    0 0 25px rgba(170, 77, 247, 0.5),
+                    0 0 50px rgba(240, 203, 1, 0.3);
+            }
+            50% {
+                box-shadow: 
+                    0 20px 40px rgba(0, 0, 0, 0.6),
+                    0 0 0 2px rgba(170, 77, 247, 0.8),
+                    0 0 35px rgba(170, 77, 247, 0.7),
+                    0 0 70px rgba(240, 203, 1, 0.5);
+            }
+        }
+        
+        /* BUTTONS */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 1rem 1.5rem;
             font-size: 1.125rem;
             font-weight: 600;
             text-align: center;
             text-decoration: none;
             border: none;
-            border-radius: var(--radius-md);
+            border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: var(--font-primary);
-            margin: var(--space-sm) 0;
-            width: 100%;
-            max-width: 400px;
+            font-family: inherit;
+            margin-bottom: 1rem;
         }
         
         .btn-primary {
-            background: var(--gradient-accent);
+            background: linear-gradient(90deg, #aa4df7 0%, #f0cb01 100%);
             color: var(--color-dark);
-            box-shadow: var(--shadow-glow);
+            box-shadow: 0 0 20px rgba(240, 203, 1, 0.4);
         }
         
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 40px rgba(240, 203, 1, 0.6);
+        .btn-primary:active {
+            transform: scale(0.98);
         }
         
         .btn-secondary {
@@ -217,169 +176,130 @@
             border: 2px solid rgba(255, 255, 255, 0.3);
         }
         
-        .btn-secondary:hover {
+        .btn-secondary:active {
             background: rgba(255, 255, 255, 0.15);
-            border-color: var(--color-secondary);
-            transform: translateY(-2px);
         }
         
+        /* DIVIDER */
         .divider {
             width: 100%;
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            margin: var(--space-xl) 0;
+            margin: 2rem 0;
         }
         
-        .cta-section {
+        /* TEST CTA */
+        .test-cta {
             background: rgba(170, 77, 247, 0.1);
             border: 2px solid rgba(170, 77, 247, 0.3);
-            border-radius: var(--radius-md);
-            padding: var(--space-xl);
-            margin-top: var(--space-xl);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
         }
         
-        .cta-section h2 {
-            font-size: 1.75rem;
+        .test-cta h2 {
+            font-size: 1.5rem;
             color: var(--color-white);
-            margin-bottom: var(--space-md);
+            margin-bottom: 0.75rem;
+            text-align: center;
+            line-height: 1.2;
         }
         
-        .cta-section p {
-            font-size: 1rem;
-            color: var(--color-text);
-            margin-bottom: var(--space-lg);
-        }
-        
-        .book-mockup-container {
-            margin: var(--space-xl) 0;
-            display: flex;
-            justify-content: center;
-            perspective: 1200px;
-            padding: var(--space-lg) 0;
-        }
-        
-        .book-mockup {
-            position: relative;
-            width: 100%;
-            max-width: 400px;
-        }
-        
-        .book-video {
-            width: 100%;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.5),
-                0 0 0 2px rgba(170, 77, 247, 0.6),
-                0 0 30px rgba(170, 77, 247, 0.6),
-                0 0 60px rgba(240, 203, 1, 0.4);
-            animation: videoGlowPulse 3s ease-in-out infinite;
-        }
-        
-        @keyframes videoGlowPulse {
-            0%, 100% {
-                box-shadow: 
-                    0 20px 40px rgba(0, 0, 0, 0.5),
-                    0 0 0 2px rgba(170, 77, 247, 0.6),
-                    0 0 30px rgba(170, 77, 247, 0.6),
-                    0 0 60px rgba(240, 203, 1, 0.4);
-            }
-            50% {
-                box-shadow: 
-                    0 25px 50px rgba(0, 0, 0, 0.6),
-                    0 0 0 2px rgba(170, 77, 247, 0.8),
-                    0 0 40px rgba(170, 77, 247, 0.8),
-                    0 0 80px rgba(240, 203, 1, 0.6);
-            }
-        }
-        
-        /* Rimuovi spine e pages - non servono più */
-        .book-spine,
-        .book-pages,
-        .book-cover {
-            display: none;
-        }
-        
-        .glow-pulse {
-            animation: glowPulse 3s ease-in-out infinite;
-        }
-        
-        @keyframes glowPulse {
-            0%, 100% {
-                filter: drop-shadow(0 0 15px rgba(170, 77, 247, 0.6));
-            }
-            50% {
-                filter: drop-shadow(0 0 25px rgba(240, 203, 1, 0.8));
-            }
-        }
-        
-        .features-list {
-            text-align: left;
-            margin: var(--space-lg) 0;
-        }
-        
-        .features-list li {
+        .test-cta-subtitle {
             font-size: 0.95rem;
             color: var(--color-text);
-            margin-bottom: var(--space-sm);
-            padding-left: var(--space-md);
-            position: relative;
+            text-align: center;
+            margin-bottom: 1rem;
         }
         
-        .features-list li::before {
+        .test-features {
+            list-style: none;
+            margin-bottom: 1.25rem;
+        }
+        
+        .test-features li {
+            font-size: 0.95rem;
+            color: var(--color-text);
+            margin-bottom: 0.5rem;
+            padding-left: 1.75rem;
+            position: relative;
+            line-height: 1.3;
+        }
+        
+        .test-features li::before {
             content: '✨';
             position: absolute;
             left: 0;
+            font-size: 1rem;
         }
         
+        .test-badge {
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--color-secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        /* FOOTER */
         .footer {
+            padding: 1.5rem 1rem;
             background: rgba(26, 11, 46, 0.95);
-            padding: var(--space-lg) 0;
             border-top: 1px solid rgba(170, 77, 247, 0.2);
             text-align: center;
-            margin-top: auto;
         }
         
         .footer p {
-            margin-bottom: var(--space-sm);
             font-size: 0.875rem;
-            color: var(--color-text-dark);
+            color: rgba(226, 232, 240, 0.7);
+            margin-bottom: 0.5rem;
         }
         
         .footer a {
             color: var(--color-secondary);
             text-decoration: none;
-            transition: color 0.3s ease;
         }
         
-        .footer a:hover {
-            color: var(--color-primary);
-        }
-        
-        /* Responsive */
+        /* DESKTOP OPTIMIZATION */
         @media (min-width: 768px) {
-            h1 { font-size: 3rem; }
-            .logo img { height: 50px; }
-            .thank-you-card { padding: var(--space-2xl) 3rem; }
+            .logo img {
+                height: 45px;
+            }
             
-            /* Video più grande su tablet/desktop */
-            .book-mockup {
-                max-width: 500px;
+            .main {
+                padding: 3rem 2rem;
+            }
+            
+            .success h1 {
+                font-size: 2.5rem;
+            }
+            
+            .success p {
+                font-size: 1.125rem;
+            }
+            
+            .video-wrapper {
+                width: 400px;
+            }
+            
+            .test-cta {
+                padding: 2rem;
+            }
+            
+            .test-cta h2 {
+                font-size: 1.75rem;
+            }
+            
+            .btn {
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
             }
         }
         
-        @media (max-width: 480px) {
-            h1 { font-size: 2rem; }
-            .subtitle { font-size: 1rem; }
-            .btn { font-size: 1rem; padding: 1rem 2rem; }
-            
-            /* Video ottimizzato mobile */
-            .book-mockup {
-                max-width: 320px;
-            }
-            
-            .book-mockup-container {
-                padding: var(--space-md) 0;
+        @media (min-width: 1024px) {
+            .video-wrapper {
+                width: 450px;
             }
         }
     </style>
@@ -388,154 +308,96 @@
     
     <!-- HEADER -->
     <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <a href="https://canzonify.com" class="logo">
-                    <img src="logo.png" alt="CanzoniFy Logo">
-                </a>
-            </div>
+        <div class="logo">
+            <a href="https://canzonify.com">
+                <img src="logo.png" alt="CanzoniFy">
+            </a>
         </div>
     </header>
 
     <!-- MAIN CONTENT -->
-    <main class="main-content">
-        <div class="container">
-            <div class="thank-you-card">
-                
-                <div class="success-icon">🎉</div>
-                
-                <h1>
-                    Grazie <span class="user-name" id="userName"></span>!
-                </h1>
-                
-                <p class="subtitle">
-                    La tua guida è pronta! Clicca sul bottone qui sotto per scaricarla subito e iniziare a preparare il tuo provino da vero professionista.
-                </p>
+    <main class="main">
+        
+        <!-- SUCCESS MESSAGE -->
+        <div class="success">
+            <div class="success-icon">🎉</div>
+            <h1>Grazie <span class="user-name" id="userName"></span>!</h1>
+            <p>La tua guida è pronta! Scaricala subito e inizia a preparare il tuo provino da vero professionista.</p>
+        </div>
 
-                <!-- VIDEO MOCKUP -->
-                <div class="book-mockup-container">
-                    <div class="book-mockup">
-                        <video class="book-video" autoplay muted loop playsinline>
-                            <source src="video-mockup.mp4" type="video/mp4">
-                            <!-- Fallback -->
-                            <img src="copertina-mockup.png" alt="Guida Provini CanzoniFy">
-                        </video>
-                    </div>
-                </div>
-
-                <!-- DOWNLOAD BUTTON -->
-                <a href="guida-provini-canzonify.pdf" download class="btn btn-primary">
-                    📥 Scarica la Guida Ora
-                </a>
-
-                <div class="divider"></div>
-
-                <!-- CTA TEST PERSONALITÀ -->
-                <div class="cta-section">
-                    <h2>
-                        🎭 Scopri il Tuo <span class="text-gradient">Profilo Artistico</span>
-                    </h2>
-                    
-                    <p>
-                        Ogni artista è unico. Il nostro test della personalità musicale ti rivela:
-                    </p>
-
-                    <ul class="features-list">
-                        <li><strong>Il tuo archetipo artistico</strong> tra 32 profili unici</li>
-                        <li><strong>I tuoi punti di forza</strong> naturali sul palco</li>
-                        <li><strong>Le strategie personalizzate</strong> per il tuo sviluppo</li>
-                        <li><strong>Avatar 3D Pixar-style</strong> del tuo profilo</li>
-                    </ul>
-
-                    <p style="margin-bottom: var(--space-lg);">
-                        <strong>100% gratuito • 5 minuti • Risultati immediati</strong>
-                    </p>
-
-                    <a href="https://canzonify.com/test" class="btn btn-primary">
-                        🚀 Fai il Test Gratuito
-                    </a>
-                </div>
-
-                <div class="divider"></div>
-
-                <!-- SECONDARY CTA -->
-                <p style="font-size: 0.9rem; color: var(--color-text-dark); margin-top: var(--space-lg);">
-                    Hai domande o vuoi una consulenza personalizzata?
-                </p>
-                
-                <a href="https://canzonify.com" class="btn btn-secondary">
-                    Visita CanzoniFy.com
-                </a>
-
+        <!-- VIDEO MOCKUP -->
+        <div class="video-container">
+            <div class="video-wrapper">
+                <video class="video-mockup" autoplay muted loop playsinline>
+                    <source src="video-mockup.mp4" type="video/mp4">
+                </video>
             </div>
         </div>
+
+        <!-- DOWNLOAD BUTTON -->
+        <a href="guida-provini-canzonify.pdf" download class="btn btn-primary">
+            📥 Scarica la Guida Ora
+        </a>
+
+        <!-- DIVIDER -->
+        <div class="divider"></div>
+
+        <!-- TEST CTA -->
+        <div class="test-cta">
+            <h2>🎭 Scopri il Tuo Profilo Artistico</h2>
+            
+            <p class="test-cta-subtitle">
+                Il nostro test MBTI musicale ti rivela:
+            </p>
+
+            <ul class="test-features">
+                <li>Il tuo archetipo tra 32 profili unici</li>
+                <li>I tuoi punti di forza sul palco</li>
+                <li>Strategie personalizzate</li>
+                <li>Avatar 3D Pixar del tuo profilo</li>
+            </ul>
+
+            <p class="test-badge">
+                100% gratuito • 5 minuti • Risultati immediati
+            </p>
+
+            <a href="https://canzonify.com/test" class="btn btn-primary">
+                🚀 Fai il Test Gratuito
+            </a>
+        </div>
+
+        <!-- SECONDARY CTA -->
+        <p style="text-align: center; font-size: 0.9rem; color: rgba(226, 232, 240, 0.7); margin-bottom: 1rem;">
+            Hai domande o vuoi una consulenza?
+        </p>
+        
+        <a href="https://canzonify.com" class="btn btn-secondary">
+            Visita CanzoniFy.com
+        </a>
+
     </main>
 
     <!-- FOOTER -->
     <footer class="footer">
-        <div class="container">
-            <p>
-                Creato con ❤️ da <a href="https://canzonify.com" target="_blank">CanzoniFy</a>
-            </p>
-            <p style="margin-bottom: 0;">
-                Per artisti che credono nell'autenticità, non nei compromessi.
-            </p>
-        </div>
+        <p>
+            Creato con ❤️ da <a href="https://canzonify.com">CanzoniFy</a>
+        </p>
+        <p>
+            Per artisti che credono nell'autenticità
+        </p>
     </footer>
 
     <!-- JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            
-            // Personalizza con il nome dell'utente
-            const userName = localStorage.getItem('userName');
-            const userNameElement = document.getElementById('userName');
-            
-            if (userName && userNameElement) {
-                userNameElement.textContent = userName;
-            } else if (userNameElement) {
-                userNameElement.textContent = '';
-                // Nascondi lo spazio se non c'è nome
-                document.querySelector('h1').innerHTML = 'Grazie!';
-            }
-
-            // Track download button click
-            const downloadBtn = document.querySelector('a[download]');
-            if (downloadBtn) {
-                downloadBtn.addEventListener('click', function() {
-                    console.log('PDF Download initiated');
-                    
-                    // Optional: Track conversion
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'download', {
-                            'event_category': 'Lead Magnet',
-                            'event_label': 'Guida Provini PDF'
-                        });
-                    }
-                });
-            }
-
-            // Track test CTA click
-            const testBtn = document.querySelector('a[href*="/test"]');
-            if (testBtn) {
-                testBtn.addEventListener('click', function() {
-                    console.log('Test CTA clicked');
-                    
-                    // Optional: Track conversion
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'click', {
-                            'event_category': 'CTA',
-                            'event_label': 'Test Personalità'
-                        });
-                    }
-                });
-            }
-
-        });
-
-        // Console easter egg
-        console.log('%c🎤 CanzoniFy ', 'background: #aa4df7; color: #fff; padding: 10px 20px; font-size: 20px; font-weight: bold;');
-        console.log('%cBenvenuto nella famiglia! 🎉', 'color: #f0cb01; font-size: 14px;');
+        // Personalizza con il nome dell'utente
+        const userName = localStorage.getItem('userName');
+        const userNameElement = document.getElementById('userName');
+        
+        if (userName && userNameElement) {
+            userNameElement.textContent = userName;
+        } else if (userNameElement) {
+            userNameElement.style.display = 'none';
+        }
     </script>
 
 </body>
