@@ -58,6 +58,10 @@
             flex-direction: column;
         }
         
+        html {
+            height: 100%;
+        }
+        
         .header {
             padding: var(--space-md) 0;
             background: rgba(26, 11, 46, 0.95);
@@ -257,37 +261,42 @@
         .book-mockup {
             position: relative;
             width: 100%;
-            max-width: 280px;
-            transition: transform 0.4s ease;
+            max-width: 400px;
         }
         
-        .book-mockup:hover {
-            transform: translateY(-5px);
-        }
-        
-        .book-cover {
+        .book-video {
             width: 100%;
             height: auto;
-            border-radius: 12px;
+            border-radius: 15px;
             box-shadow: 
                 0 20px 40px rgba(0, 0, 0, 0.5),
                 0 0 0 2px rgba(170, 77, 247, 0.6),
-                0 0 25px rgba(170, 77, 247, 0.5),
-                0 0 50px rgba(240, 203, 1, 0.3);
-            transition: all 0.4s ease;
+                0 0 30px rgba(170, 77, 247, 0.6),
+                0 0 60px rgba(240, 203, 1, 0.4);
+            animation: videoGlowPulse 3s ease-in-out infinite;
         }
         
-        .book-mockup:hover .book-cover {
-            box-shadow: 
-                0 30px 60px rgba(0, 0, 0, 0.6),
-                0 0 0 2px rgba(170, 77, 247, 0.8),
-                0 0 35px rgba(170, 77, 247, 0.7),
-                0 0 70px rgba(240, 203, 1, 0.5);
+        @keyframes videoGlowPulse {
+            0%, 100% {
+                box-shadow: 
+                    0 20px 40px rgba(0, 0, 0, 0.5),
+                    0 0 0 2px rgba(170, 77, 247, 0.6),
+                    0 0 30px rgba(170, 77, 247, 0.6),
+                    0 0 60px rgba(240, 203, 1, 0.4);
+            }
+            50% {
+                box-shadow: 
+                    0 25px 50px rgba(0, 0, 0, 0.6),
+                    0 0 0 2px rgba(170, 77, 247, 0.8),
+                    0 0 40px rgba(170, 77, 247, 0.8),
+                    0 0 80px rgba(240, 203, 1, 0.6);
+            }
         }
         
-        /* Rimuovi spine e pages su mobile */
+        /* Rimuovi spine e pages - non servono più */
         .book-spine,
-        .book-pages {
+        .book-pages,
+        .book-cover {
             display: none;
         }
         
@@ -353,52 +362,9 @@
             .logo img { height: 50px; }
             .thank-you-card { padding: var(--space-2xl) 3rem; }
             
-            /* Mockup più grande su tablet/desktop */
+            /* Video più grande su tablet/desktop */
             .book-mockup {
-                max-width: 450px;
-            }
-            
-            .book-mockup:hover {
-                transform: translateY(-10px) rotateY(-5deg);
-            }
-            
-            .book-cover {
-                transform: rotateY(-8deg) rotateX(2deg);
-                border-radius: 15px;
-            }
-            
-            .book-mockup:hover .book-cover {
-                transform: rotateY(-5deg) rotateX(1deg);
-            }
-            
-            /* Mostra spine e pages su desktop */
-            .book-spine {
-                display: block;
-                position: absolute;
-                left: -8px;
-                top: 5%;
-                bottom: 5%;
-                width: 20px;
-                background: linear-gradient(90deg, 
-                    rgba(80, 30, 120, 0.9) 0%, 
-                    rgba(120, 50, 180, 0.8) 50%, 
-                    rgba(80, 30, 120, 0.6) 100%);
-                border-radius: 3px 0 0 3px;
-                transform: translateX(-100%) rotateY(90deg);
-                transform-origin: right center;
-                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-            }
-            
-            .book-pages {
-                display: block;
-                position: absolute;
-                right: -3px;
-                top: 3%;
-                bottom: 3%;
-                width: 8px;
-                background: linear-gradient(180deg, #f5f5f5 0%, #e0e0e0 100%);
-                border-radius: 0 2px 2px 0;
-                box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+                max-width: 500px;
             }
         }
         
@@ -407,7 +373,7 @@
             .subtitle { font-size: 1rem; }
             .btn { font-size: 1rem; padding: 1rem 2rem; }
             
-            /* Mockup ancora più grande su mobile */
+            /* Video ottimizzato mobile */
             .book-mockup {
                 max-width: 320px;
             }
@@ -446,12 +412,14 @@
                     La tua guida è pronta! Clicca sul bottone qui sotto per scaricarla subito e iniziare a preparare il tuo provino da vero professionista.
                 </p>
 
-                <!-- BOOK MOCKUP -->
+                <!-- VIDEO MOCKUP -->
                 <div class="book-mockup-container">
-                    <div class="book-mockup glow-pulse">
-                        <div class="book-spine"></div>
-                        <img src="copertina-mockup.png" alt="Guida Provini CanzoniFy" class="book-cover">
-                        <div class="book-pages"></div>
+                    <div class="book-mockup">
+                        <video class="book-video" autoplay muted loop playsinline>
+                            <source src="video-mockup.mp4" type="video/mp4">
+                            <!-- Fallback -->
+                            <img src="copertina-mockup.png" alt="Guida Provini CanzoniFy">
+                        </video>
                     </div>
                 </div>
 
