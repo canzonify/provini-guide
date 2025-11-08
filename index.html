@@ -517,7 +517,7 @@
                     <div class="form-wrapper fade-in-up">
                         <h3 class="form-title">Scarica la Guida Gratuita</h3>
                         
-                        <form id="leadForm">
+                        <form id="leadForm" action="https://docs.google.com/forms/d/e/1FAIpQLSckAyqus_qZyUoMjIKDMCCTNZPNuiaYkF8JFm8VMUfD-6q18A/formResponse" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
                             
                             <div class="form-group">
                                 <label for="name" class="form-label">Nome</label>
@@ -668,56 +668,30 @@
         </div>
     </footer>
 
-    <!-- Hidden iframe for form submission without redirect -->
-    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+    <!-- Hidden iframe for Google Forms submission -->
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {window.location='thank-you.html';}"></iframe>
 
     <!-- JavaScript -->
     <script>
+        var submitted = false;
+        
         document.addEventListener('DOMContentLoaded', function() {
             
             // Form submission handler
             const form = document.getElementById('leadForm');
             
             if (form) {
-                form.addEventListener('submit', function(e) {
-                    e.preventDefault(); // Previeni submit normale
-                    
+                form.addEventListener('submit', function() {
                     const submitBtn = form.querySelector('button[type="submit"]');
-                    const originalText = submitBtn.innerHTML;
                     submitBtn.disabled = true;
                     submitBtn.innerHTML = '⏳ Invio in corso...';
                     
                     const name = document.getElementById('name').value;
                     const email = document.getElementById('email').value;
                     
-                    // Prepara dati per Google Forms
-                    const formData = new FormData();
-                    formData.append('entry.1079412521', name);
-                    formData.append('entry.1597607212', email);
-                    
-                    const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSckAyqus_qZyUoMjIKDMCCTNZPNuiaYkF8JFm8VMUfD-6q18A/formResponse';
-                    
-                    // Invia a Google Forms
-                    fetch(GOOGLE_FORM_ACTION, {
-                        method: 'POST',
-                        body: formData,
-                        mode: 'no-cors' // Necessario per CORS
-                    })
-                    .then(() => {
-                        // Salva dati in localStorage
-                        localStorage.setItem('userName', name);
-                        localStorage.setItem('userEmail', email);
-                        
-                        // Redirect a thank-you.html
-                        window.location.href = 'thank-you.html';
-                    })
-                    .catch((error) => {
-                        console.log('Form inviato (no-cors non restituisce conferma)');
-                        // Anche con "errore", i dati sono stati inviati (no-cors)
-                        localStorage.setItem('userName', name);
-                        localStorage.setItem('userEmail', email);
-                        window.location.href = 'thank-you.html';
-                    });
+                    // Salva dati in localStorage
+                    localStorage.setItem('userName', name);
+                    localStorage.setItem('userEmail', email);
                 });
             }
             
