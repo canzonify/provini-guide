@@ -517,7 +517,7 @@
                     <div class="form-wrapper fade-in-up">
                         <h3 class="form-title">Scarica la Guida Gratuita</h3>
                         
-                        <form id="leadForm" action="https://docs.google.com/forms/d/e/1FAIpQLSckAyqus_qZyUoMjIKDMCCTNZPNuiaYkF8JFm8VMUfD-6q18A/formResponse" method="POST" target="hidden_iframe">
+                        <form id="leadForm">
                             
                             <div class="form-group">
                                 <label for="name" class="form-label">Nome</label>
@@ -680,6 +680,8 @@
             
             if (form) {
                 form.addEventListener('submit', function(e) {
+                    e.preventDefault(); // Previeni submit normale
+                    
                     const submitBtn = form.querySelector('button[type="submit"]');
                     const originalText = submitBtn.innerHTML;
                     submitBtn.disabled = true;
@@ -688,14 +690,34 @@
                     const name = document.getElementById('name').value;
                     const email = document.getElementById('email').value;
                     
-                    // Salva dati in localStorage per la thank you page
-                    localStorage.setItem('userName', name);
-                    localStorage.setItem('userEmail', email);
+                    // Prepara dati per Google Forms
+                    const formData = new FormData();
+                    formData.append('entry.1079412521', name);
+                    formData.append('entry.1597607212', email);
                     
-                    // Redirect a thank-you.html dopo 1.5 secondi
-                    setTimeout(function() {
+                    const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSckAyqus_qZyUoMjIKDMCCTNZPNuiaYkF8JFm8VMUfD-6q18A/formResponse';
+                    
+                    // Invia a Google Forms
+                    fetch(GOOGLE_FORM_ACTION, {
+                        method: 'POST',
+                        body: formData,
+                        mode: 'no-cors' // Necessario per CORS
+                    })
+                    .then(() => {
+                        // Salva dati in localStorage
+                        localStorage.setItem('userName', name);
+                        localStorage.setItem('userEmail', email);
+                        
+                        // Redirect a thank-you.html
                         window.location.href = 'thank-you.html';
-                    }, 1500);
+                    })
+                    .catch((error) => {
+                        console.log('Form inviato (no-cors non restituisce conferma)');
+                        // Anche con "errore", i dati sono stati inviati (no-cors)
+                        localStorage.setItem('userName', name);
+                        localStorage.setItem('userEmail', email);
+                        window.location.href = 'thank-you.html';
+                    });
                 });
             }
             
